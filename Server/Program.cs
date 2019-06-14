@@ -18,7 +18,7 @@ namespace Server
             {
                 UdpReceiveResult res = await udpClient.ReceiveAsync();
                 var msg = Encoding.ASCII.GetString(res.Buffer);
-                Console.WriteLine(msg);
+                Console.WriteLine($"from {res.RemoteEndPoint} message {msg}");
                 await udpClient.SendAsync(res.Buffer, res.Buffer.Length, res.RemoteEndPoint);
             }
 
